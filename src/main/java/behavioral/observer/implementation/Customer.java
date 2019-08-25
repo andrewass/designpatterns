@@ -5,19 +5,28 @@ import lombok.Getter;
 
 import java.util.*;
 
+/**
+ * Implementation of an Observer, a customer subscribing to updates in fruit prices
+ */
 @Getter
 public class Customer implements Observer {
 
-    int id;
+    private int id;
     private Map<Fruit, List<Integer>> priceHistory = new EnumMap<>(Fruit.class);
 
     public Customer(int id) {
         this.id = id;
     }
 
-    public void update(Fruit fruitType) {
-        List<Integer> history = priceHistory.computeIfAbsent(fruitType,  v ->  new ArrayList<Integer>());
-        history.add(fruitType.getPrice());
+    @Override
+    public void update(Fruit fruit) {
+        List<Integer> history = priceHistory.computeIfAbsent(fruit,  v ->  new ArrayList<Integer>());
+        history.add(fruit.getPrice());
+    }
+
+    @Override
+    public List<Integer> getSubscriptionHistory(Fruit fruit) {
+        return priceHistory.get(fruit);
     }
 
     @Override

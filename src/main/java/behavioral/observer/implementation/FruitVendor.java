@@ -8,16 +8,22 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * Implementation of a Subject, a fruit vendor distributing updates
+ * of changes in fruit prices
+ */
 public class FruitVendor implements Subject {
 
     private Map<Fruit, Set<Observer>> fruitMap = new EnumMap<>(Fruit.class);
 
+    @Override
     public void register(Fruit fruit, Observer observer) {
         Set<Observer> observers = fruitMap.computeIfAbsent(fruit, v -> new HashSet<Observer>());
         observers.add(observer);
         notifyObserver(fruit, observer);
     }
 
+    @Override
     public void unregister(Fruit fruit, Observer observer) {
         Set<Observer> observers = fruitMap.get(fruit);
         if (observer != null) {
@@ -25,14 +31,9 @@ public class FruitVendor implements Subject {
         }
     }
 
-    /**
-     * Update the price for a given type of fruit
-     *
-     * @param fruit
-     * @param price
-     */
-    public void updateFruitPrice(Fruit fruit, int price) {
-        fruit.setPrice(price);
+    @Override
+    public void updateSubject(Fruit fruit, int updatedPrice){
+        fruit.setPrice(updatedPrice);
         notifyObservers(fruit);
     }
 
@@ -55,9 +56,7 @@ public class FruitVendor implements Subject {
         observer.update(fruit);
     }
 
-    /**
-     * Return a set of observers for a given fruit type
-     */
+    @Override
     public Set<Observer> getObservers(Fruit fruit) {
         return fruitMap.get(fruit);
     }

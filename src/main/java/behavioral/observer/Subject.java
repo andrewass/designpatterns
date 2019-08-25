@@ -38,5 +38,13 @@ public interface Subject {
      * @param fruit Fruit type subscribed to
      */
     public Set<Observer> getObservers(Fruit fruit);
+
+    /**
+     * Performing an update of fruit price
+     *
+     * @param fruit Fruit type whose price has changed
+     * @param updatedPrice Updated price of the given fruit type
+     */
+    public void updateSubject(Fruit fruit, int updatedPrice);
 }
 

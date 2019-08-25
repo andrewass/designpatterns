@@ -3,6 +3,8 @@ package behavioral.observer;
 
 import behavioral.observer.implementation.Fruit;
 
+import java.util.List;
+
 public interface Observer {
 
     /**
@@ -12,4 +14,11 @@ public interface Observer {
      */
     public void update(Fruit fruit);
 
+
+    /**
+     * Get the history of updates to subject subscribed to.
+     *
+     * @param fruit Type of the fruit which history is retrieved
+     */
+    public List<Integer> getSubscriptionHistory(Fruit fruit);
 }

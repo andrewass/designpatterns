@@ -14,11 +14,11 @@ public enum Fruit {
         this.price = price;
     }
 
-    Integer getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    void setPrice(int price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
