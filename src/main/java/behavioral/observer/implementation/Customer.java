@@ -3,25 +3,21 @@ package behavioral.observer.implementation;
 import behavioral.observer.Observer;
 import lombok.Getter;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @Getter
 public class Customer implements Observer {
 
     int id;
-    private Map<FruitType, Fruit> fruits = new HashMap<FruitType, Fruit>();
+    private Map<Fruit, List<Integer>> priceHistory = new EnumMap<>(Fruit.class);
 
-    Customer(int id) {
+    public Customer(int id) {
         this.id = id;
     }
 
-    public void update(FruitType fruitType, int updatedPrice) {
-        Fruit fruit = fruits.get(fruitType);
-        if (fruit != null) {
-            fruit.setPrice(updatedPrice);
-            fruits.put(fruitType, fruit);
-        }
+    public void update(Fruit fruitType) {
+        List<Integer> history = priceHistory.computeIfAbsent(fruitType,  v ->  new ArrayList<Integer>());
+        history.add(fruitType.getPrice());
     }
 
     @Override

@@ -1,10 +1,15 @@
 package behavioral.observer;
 
 
-import behavioral.observer.implementation.FruitType;
+import behavioral.observer.implementation.Fruit;
 
 public interface Observer {
 
-    public void update(FruitType fruitType, int updatedPrice);
+    /**
+     * Update status for an Observer instance
+     *
+     * @param fruit Type of fruit which have updates
+     */
+    public void update(Fruit fruit);
 
 }

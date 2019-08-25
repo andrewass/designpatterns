@@ -1,18 +1,25 @@
 package behavioral.observer.implementation;
 
-import lombok.Getter;
-import lombok.Setter;
+public enum Fruit {
 
-@Getter
-@Setter
-public class Fruit {
-
-    private FruitType fruitType;
+    ORANGE(30),
+    APPLE(28),
+    BANANA(24),
+    GRAPEFRUIT(51),
+    PEAR(31);
 
     private int price;
 
-    Fruit(FruitType fruitType, int price) {
-        this.fruitType = fruitType;
+    Fruit(int price) {
         this.price = price;
     }
+
+    Integer getPrice() {
+        return price;
+    }
+
+    void setPrice(int price) {
+        this.price = price;
+    }
+
 }
