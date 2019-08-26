@@ -14,7 +14,6 @@ public interface Observer {
      */
     public void update(Fruit fruit);
 
-
     /**
      * Get the history of updates to subject subscribed to.
      *
