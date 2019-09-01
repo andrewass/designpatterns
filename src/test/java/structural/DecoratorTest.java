@@ -5,7 +5,7 @@ import structural.decorator.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DecoratorTest {
+class DecoratorTest {
 
     @Test
     void shouldCreateSequenceOfHtmlTags() {
@@ -14,6 +14,6 @@ public class DecoratorTest {
                         new BoldTagDecorator(
                                 new BaseTag())));
 
-       assertEquals("<div> <p> <b> Hello World </b> </p> </div>", wrappedTags.wrapTag());
+        assertEquals("<div> <p> <b> Hello World </b> </p> </div>", wrappedTags.wrapTag());
     }
 }
