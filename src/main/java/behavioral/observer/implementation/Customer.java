@@ -20,7 +20,7 @@ public class Customer implements Observer {
 
     @Override
     public void update(Fruit fruit) {
-        List<Integer> history = priceHistory.computeIfAbsent(fruit,  v ->  new ArrayList<Integer>());
+        List<Integer> history = priceHistory.computeIfAbsent(fruit,  v ->  new ArrayList<>());
         history.add(fruit.getPrice());
     }
 

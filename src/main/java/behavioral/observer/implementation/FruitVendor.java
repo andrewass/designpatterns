@@ -18,7 +18,7 @@ public class FruitVendor implements Subject {
 
     @Override
     public void register(Fruit fruit, Observer observer) {
-        Set<Observer> observers = fruitMap.computeIfAbsent(fruit, v -> new HashSet<Observer>());
+        Set<Observer> observers = fruitMap.computeIfAbsent(fruit, v -> new HashSet<>());
         observers.add(observer);
         notifyObserver(fruit, observer);
     }
@@ -37,11 +37,6 @@ public class FruitVendor implements Subject {
         notifyObservers(fruit);
     }
 
-    /**
-     * Notfiy all observers whenever a fruit type has a price update
-     *
-     * @param fruit Type of fruit which has had a price update
-     */
     private void notifyObservers(Fruit fruit) {
         Set<Observer> observers = fruitMap.get(fruit);
         if (observers != null) {

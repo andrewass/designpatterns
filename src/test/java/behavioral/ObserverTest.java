@@ -1,4 +1,4 @@
-package behavorial;
+package behavioral;
 
 
 import behavioral.observer.Observer;
